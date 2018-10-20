@@ -43,7 +43,7 @@ Route::group(['middleware'=>['auth']],function (){
 
 
     Route::match(['get','post'],'/admin/add-attributes/{id}','ProductsController@addAttributes');
-
+    Route::get('/admin/delete-attributes/{id}','ProductsController@deleteAttributes');
 
 });
 Route::get('/home', 'HomeController@index')->name('home');

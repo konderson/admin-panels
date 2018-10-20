@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Products;
+use App\ProductsAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -185,10 +186,40 @@ $categories=Category::where('parent_id','<>','0')->get();
 
     /*      Attribute function     */
 
-    public  function  addAttributes(Request $request,$data){
+    public  function  addAttributes(Request $request,$id){
 
-        return view("admin.products.addAttribute");
+       if($request->isMethod('post')){
+
+           $data=$request->all();
+          // echo "<pre>"; print_r($data);die;
+
+           foreach ($data['sku']as $key=>$val){
+               if(!empty($val)){
+
+                   $attribute=new ProductsAttribute;
+                   $attribute->sku=$val;
+                   $attribute->size=$data['size'][$key];
+                   $attribute->price=$data['price'][$key];
+                   $attribute->stock=$data['price'][$key];
+                   $attribute->product_id=$id;
+                   $attribute->save();
+
+               }
+           }
+           return redirect('admin/add-attributes/'.$id)->with('flash_message_success','Значение успешно сохранено');
+       }
+
+        $product=Products::with('attributes')->where(['id'=>$id])->first();
+       //$product=json_decode(json_encode($product));
+      // echo "<pre>"; print_r($product);die;
+        return view("admin.products.addAttribute",compact('product'));
 
     }
+public function  deleteAttributes($id){
+        ProductsAttribute::where('id',$id)->delete();
+        return redirect()->back()->with('flash_message_success','Значение успешно удалено');
 
+
+
+}
 }

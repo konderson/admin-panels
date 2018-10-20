@@ -60,7 +60,9 @@
 
                                             <img width="30px" height="30px" src="/img/products/large/{{$product->img}}">
                                         </td>
-                                        <td class="center"><a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-primary btn-mini">Изменить</a>  <a rel="{{$product->id}}" rel1="delete_product" href="javascript" class="btn btn-danger btn-mini deleteRecord delete_product">Удалить</a></td>
+                                        <td class="center"><a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-primary btn-mini">Изменить</a>  <a rel="{{$product->id}}" rel1="delete_product" href="javascript" class="btn btn-danger btn-mini deleteRecord delete_product">Удалить</a>
+                                            <a href="{{url('/admin/add-attributes/'.$product->id)}}" class="btn btn-success btn-mini">Добавить </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

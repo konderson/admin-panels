@@ -1,9 +1,24 @@
 <!--Header-part-->
+
+
+
+
 <div id="header">
-    <h1><a href="{{'/admin/dashboard'}}">KTS Admin</a></h1>
+    
+    <a class="navbar-brand" href="index.html">
+        <!-- Logo icon -->
+        <b class="logo-icon p-l-10">
+            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+            <!-- Dark Logo icon -->
+            <img width="70px" height="70px" src="/img/big-logo.png" alt="homepage" class="light-logo" />
+            <p style="color: red;">KTS</p>
+        </b>
+        <!--End Logo icon -->
+        <!-- Logo text -->
+    </a>
+
 </div>
 <!--close-Header-part-->
-
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
